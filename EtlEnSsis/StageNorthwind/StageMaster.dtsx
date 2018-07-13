@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="7/1/2018 12:58:47 PM"
@@ -12,7 +12,7 @@
   DTS:ObjectName="StageMaster"
   DTS:PackageType="5"
   DTS:VersionBuild="5"
-  DTS:VersionGUID="{E1845881-F5CB-405E-8EE8-7F1EEE270EF1}">
+  DTS:VersionGUID="{06D4042A-50BC-4F9F-98E5-DE05BD43356E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -81,7 +81,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecutePackageTask>
-          <Connection>{D48B99E4-0168-4832-8B19-7C331465FEDA}</Connection>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>StageCategories.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -97,7 +98,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecutePackageTask>
-          <Connection>{56F18DFA-3CAB-48B8-9363-2D9F74CB4A8C}</Connection>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>StageCustomer.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -113,7 +115,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecutePackageTask>
-          <Connection>{A721BCAF-0C1B-4F39-8958-31361CD30E89}</Connection>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>StageEmployee.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -129,7 +132,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecutePackageTask>
-          <Connection>{50270BFE-44CC-4593-AFC4-4DA8885769EC}</Connection>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>StageProduct.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -145,7 +149,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecutePackageTask>
-          <Connection>{7B651360-737E-401E-8C22-F2E9C6FE9B64}</Connection>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>StageSales.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
