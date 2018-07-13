@@ -1,0 +1,2112 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/24/2018 11:30:38 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CA305-ST"
+  DTS:CreatorName="CA305-ST\SQLSERV"
+  DTS:DTSID="{3A3464FB-318E-4492-8CE9-2F023F9B8DDB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="10250"
+  DTS:ObjectName="DimProduct"
+  DTS:PackageType="5"
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{39657DA5-6DA7-4031-86D1-EC4DDCA7F6BF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A73097AA-DFA9-4610-882C-7FD4F774E217}"
+      DTS:ObjectName="LocalHost.Northwind_Mart">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Northwind_Mart;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Northwind_Metadata]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E49F12F4-1356-4BD2-B00D-DFC546E1661F}"
+      DTS:ObjectName="LocalHost.Northwind_Metadata">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Northwind_Metadata;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1832ACBC-C3A5-44FD-9AA5-3DD3314E6010}"
+      DTS:ObjectName="LocalHost.Northwind_Stage">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Northwind_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0A77A97F-9B62-480E-963A-271438FA244F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="IdExecution">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DTF Load Dim Producto"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{7CE64796-E180-48FC-992E-9C7D7CCC7DBE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DTF Load Dim Producto"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\DTF Load Dim Producto.EventHandlers[OnError]"
+          DTS:CreationName="OnError"
+          DTS:DTSID="{3D7A5B5D-7EC2-4A6C-989C-DC696A7C202F}"
+          DTS:EventID="0"
+          DTS:EventName="OnError"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="La propiedad de propagación del evento"
+              DTS:DTSID="{A86CBCC7-0748-4224-9B6C-A854C49795C5}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables />
+        </DTS:EventHandler>
+        <DTS:EventHandler
+          DTS:refId="Package\DTF Load Dim Producto.EventHandlers[OnPreExecute]"
+          DTS:CreationName="OnPreExecute"
+          DTS:DTSID="{02C576DF-4268-48D0-8BEC-AD6C5385EBBE}"
+          DTS:EventID="0"
+          DTS:EventName="OnPreExecute"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="La propiedad de propagación del evento"
+              DTS:DTSID="{4F13A883-FF32-48EE-B952-AB152B8D4689}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\DTF Load Dim Producto.EventHandlers[OnPreExecute]\Task Get Last Execution"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{419418C1-7242-48AD-8707-C543727E52DF}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Task Get Last Execution"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{E49F12F4-1356-4BD2-B00D-DFC546E1661F}"
+                  SQLTask:SqlStatementSource="INSERT INTO EtlExecution&#xA;(Descripcion, EtlLoad)&#xA;VALUES&#xA;(?, GETDATE());&#xA;&#xA;SELECT @@IDENTITY AS IdExecution"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="IdExecution"
+                    SQLTask:DtsVariableName="User::IdExecution" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="System::PackageName"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="130"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DTF Load Dim Producto\Búsqueda"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="Búsqueda"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Categoria]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Categoria]) [refTable]
+where [refTable].[Categoria_Codigo] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Categoria_SKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Categoria_Codigo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Categoria_Nombre" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[CategoriaProducto_Codigo]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DTF Load Dim Producto\Búsqueda.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DTF Load Dim Producto\Búsqueda.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Búsqueda.Inputs[Entrada de búsqueda].Columns[CategoriaProducto_Codigo]"
+                      cachedDataType="i4"
+                      cachedName="CategoriaProducto_Codigo"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[CategoriaProducto_Codigo]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">Categoria_Codigo</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Producto\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\DTF Load Dim Producto\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Categoria_SKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\DTF Load Dim Producto\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Categoria_SKey]"
+                      name="Categoria_SKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">Categoria_SKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Producto\Búsqueda.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en &quot;Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes&quot;."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\DTF Load Dim Producto\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Producto\Búsqueda.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\DTF Load Dim Producto\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Producto\Búsqueda 1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="Búsqueda 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Categoria]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Categoria]) [refTable]
+where [refTable].[Categoria_Codigo] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Categoria_SKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Categoria_Codigo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Categoria_Nombre" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[CategoriaProducto_Codigo]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DTF Load Dim Producto\Búsqueda 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DTF Load Dim Producto\Búsqueda 1.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Búsqueda 1.Inputs[Entrada de búsqueda].Columns[CategoriaProducto_Codigo]"
+                      cachedDataType="i4"
+                      cachedName="CategoriaProducto_Codigo"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[CategoriaProducto_Codigo]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">Categoria_Codigo</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Producto\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\DTF Load Dim Producto\Búsqueda 1.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Categoria_SKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\DTF Load Dim Producto\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Categoria_SKey]"
+                      name="Categoria_SKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">Categoria_SKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Producto\Búsqueda 1.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en &quot;Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes&quot;."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\DTF Load Dim Producto\Búsqueda 1.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Producto\Búsqueda 1.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\DTF Load Dim Producto\Búsqueda 1.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Búsqueda 1.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Búsqueda 1.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Búsqueda 1.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Búsqueda 1.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Producto\Datamart Product"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Datamart Product"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Producto_SKey]
+      ,[Producto_Codigo]
+      ,[Producto_Nombre]
+      ,[Producto_PUnitario]
+      --,[Producto_Categoria_SKey]
+      ,[ProveedorNombre]
+FROM [dbo].[Dim_Producto]
+ORDER BY 2 ASC</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DTF Load Dim Producto\Datamart Product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB]"
+                  isSorted="true"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[Producto_SKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_SKey]"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[Producto_SKey]"
+                      name="Producto_SKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[Producto_Codigo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_Codigo]"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[Producto_Codigo]"
+                      name="Producto_Codigo"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[Producto_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_Nombre]"
+                      length="80"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[Producto_Nombre]"
+                      name="Producto_Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[Producto_PUnitario]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_PUnitario]"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[Producto_PUnitario]"
+                      name="Producto_PUnitario"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[ProveedorNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].ExternalColumns[ProveedorNombre]"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[ProveedorNombre]"
+                      name="ProveedorNombre"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_SKey]"
+                      dataType="i4"
+                      name="Producto_SKey" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_Codigo]"
+                      dataType="i4"
+                      name="Producto_Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="Producto_Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_PUnitario]"
+                      dataType="numeric"
+                      name="Producto_PUnitario"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].ExternalColumns[ProveedorNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="ProveedorNombre" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_SKey]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_SKey]"
+                      name="Producto_SKey" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_Codigo]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_Codigo]"
+                      name="Producto_Codigo" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_Nombre]"
+                      name="Producto_Nombre" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_PUnitario]"
+                      dataType="numeric"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_PUnitario]"
+                      name="Producto_PUnitario"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[ProveedorNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[ProveedorNombre]"
+                      name="ProveedorNombre" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Producto\Destino Producto_Mart"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino Producto_Mart"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[Dim_Producto]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].Columns[Producto_Codigo]"
+                      cachedDataType="i4"
+                      cachedName="Producto_Codigo"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_Codigo]"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Codigo]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].Columns[Producto_Nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Producto_Nombre"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_Nombre]"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Nombre]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].Columns[Producto_PUnitario]"
+                      cachedDataType="numeric"
+                      cachedName="Producto_PUnitario"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_PUnitario]"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_PUnitario]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].Columns[ProveedorNombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="ProveedorNombre"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProveedorNombre]"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[ProveedorNombre]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].Columns[Categoria_SKey]"
+                      cachedDataType="i4"
+                      cachedName="Categoria_SKey"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_Categoria_SKey]"
+                      lineageId="Package\DTF Load Dim Producto\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Categoria_SKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_SKey]"
+                      dataType="i4"
+                      name="Producto_SKey" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_Codigo]"
+                      dataType="i4"
+                      name="Producto_Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="Producto_Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_PUnitario]"
+                      dataType="numeric"
+                      name="Producto_PUnitario"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_Categoria_SKey]"
+                      dataType="i4"
+                      name="Producto_Categoria_SKey" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProveedorNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="ProveedorNombre" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Destino Producto_Mart.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Producto_Mart.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Destino Producto_Mart.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino Stg_Dim_Producto"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[Stage_Dim_Producto]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].Columns[Producto_Codigo]"
+                      cachedDataType="i4"
+                      cachedName="Producto_Codigo"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_Codigo]"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Codigo]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].Columns[Producto_Nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Producto_Nombre"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_Nombre]"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Nombre]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].Columns[Producto_PUnitario]"
+                      cachedDataType="numeric"
+                      cachedName="Producto_PUnitario"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_PUnitario]"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_PUnitario]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].Columns[ProveedorNombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="ProveedorNombre"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProveedorNombre]"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[ProveedorNombre]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].Columns[Categoria_SKey]"
+                      cachedDataType="i4"
+                      cachedName="Categoria_SKey"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_Categoria_SKey]"
+                      lineageId="Package\DTF Load Dim Producto\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Categoria_SKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_Codigo]"
+                      dataType="i4"
+                      name="Producto_Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="Producto_Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_PUnitario]"
+                      dataType="numeric"
+                      name="Producto_PUnitario"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[Producto_Categoria_SKey]"
+                      dataType="i4"
+                      name="Producto_Categoria_SKey" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProveedorNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="ProveedorNombre" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Producto\División condicional"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Enruta filas de datos a diferentes salidas según el contenido de los datos. Se usan condiciones (expresiones de SSIS) para especificar las filas que se van a enrutar. Por ejemplo, se usa para separar los registros que deben limpiarse de los registros listos para ser cargados o para enrutar solamente un subconjunto de registros."
+              name="División condicional"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DTF Load Dim Producto\División condicional.Inputs[Entrada de división condicional]"
+                  description="Entrada en la transformación División condicional"
+                  name="Entrada de división condicional">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\División condicional.Inputs[Entrada de división condicional].Columns[Producto_Nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Producto_Nombre"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Nombre]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\División condicional.Inputs[Entrada de división condicional].Columns[Producto_Codigo_Mart]"
+                      cachedDataType="i4"
+                      cachedName="Producto_Codigo_Mart"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Codigo_Mart]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\División condicional.Inputs[Entrada de división condicional].Columns[Producto_Nombre_Mart]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="Producto_Nombre_Mart"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Nombre_Mart]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Producto\División condicional.Outputs[Prodcutos Nuevos]"
+                  description="Salida 1 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Prodcutos Nuevos"
+                  synchronousInputId="Package\DTF Load Dim Producto\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">[ISNULL](#{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Codigo_Mart]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(Producto_Codigo_Mart)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Producto\División condicional.Outputs[Productos Modificados]"
+                  description="Salida 2 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Productos Modificados"
+                  synchronousInputId="Package\DTF Load Dim Producto\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">#{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Nombre]} != #{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Nombre_Mart]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Producto_Nombre != Producto_Nombre_Mart</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Producto\División condicional.Outputs[Salida predeterminada de división condicional]"
+                  description="Salida predeterminada de la transformación División condicional"
+                  exclusionGroup="1"
+                  name="Salida predeterminada de división condicional"
+                  synchronousInputId="Package\DTF Load Dim Producto\División condicional.Inputs[Entrada de división condicional]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Producto\División condicional.Outputs[Salida de error de división condicional]"
+                  description="Salida de error de la transformación División condicional"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de división condicional"
+                  synchronousInputId="Package\DTF Load Dim Producto\División condicional.Inputs[Entrada de división condicional]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Combinación de mezcla;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina dos flujos de datos ordenados en uno solo mediante la combinación FULL, LEFT o INNER. Se recomienda esta transformación cuando se pueden ordenar los flujos de datos en sus orígenes."
+              name="Left Join by Producto_Codigo"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de combinación que se debe realizar."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número de columnas de la clave de ordenación."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores NULL se tratan como valores iguales."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indica la cantidad máxima solicitada de búferes por entrada antes del bloqueo."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada izquierda de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada izquierda de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Producto_Codigo]"
+                      cachedDataType="i4"
+                      cachedName="Producto_Codigo"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[Producto_Codigo]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Producto_Nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Producto_Nombre"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[Producto_Nombre]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Producto_PUnitario]"
+                      cachedDataType="numeric"
+                      cachedName="Producto_PUnitario"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[Producto_PUnitario]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[CategoriaProducto_Codigo]"
+                      cachedDataType="i4"
+                      cachedName="CategoriaProducto_Codigo"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[CategoriaProducto_Codigo]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[ProveedorNombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="ProveedorNombre"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[ProveedorNombre]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada derecha de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada derecha de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Producto_Codigo]"
+                      cachedDataType="i4"
+                      cachedName="Producto_Codigo"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[Producto_Codigo]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Producto_Nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="Producto_Nombre"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[Producto_Nombre]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Producto_PUnitario]"
+                      cachedDataType="numeric"
+                      cachedName="Producto_PUnitario"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[Producto_PUnitario]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[ProveedorNombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="ProveedorNombre"
+                      lineageId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB].Columns[ProveedorNombre]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla]"
+                  isSorted="true"
+                  name="Salida de combinación de mezcla">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Codigo]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Codigo]"
+                      name="Producto_Codigo"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Producto_Codigo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Nombre]"
+                      name="Producto_Nombre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Producto_Nombre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_PUnitario]"
+                      dataType="numeric"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_PUnitario]"
+                      name="Producto_PUnitario"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Producto_PUnitario]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[CategoriaProducto_Codigo]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[CategoriaProducto_Codigo]"
+                      name="CategoriaProducto_Codigo">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[CategoriaProducto_Codigo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[ProveedorNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[ProveedorNombre]"
+                      name="ProveedorNombre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[ProveedorNombre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Codigo_Mart]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Codigo_Mart]"
+                      name="Producto_Codigo_Mart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Producto_Codigo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Nombre_Mart]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_Nombre_Mart]"
+                      name="Producto_Nombre_Mart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Producto_Nombre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_PUnitario_Mart]"
+                      dataType="numeric"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[Producto_PUnitario_Mart]"
+                      name="Producto_PUnitario_Mart"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Producto_PUnitario]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[ProveedorNombre_Mart]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla].Columns[ProveedorNombre_Mart]"
+                      name="ProveedorNombre_Mart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[ProveedorNombre]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Producto\Stage Product"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Stage Product"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Producto_Codigo]
+      ,[Producto_Nombre]
+      ,[Producto_PUnitario]
+      ,[CategoriaProducto_Codigo]
+      ,[ProveedorNombre]
+FROM [dbo].[Stg_Producto]
+ORDER BY 1 ASC</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DTF Load Dim Producto\Stage Product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB]"
+                  isSorted="true"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[Producto_Codigo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_Codigo]"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[Producto_Codigo]"
+                      name="Producto_Codigo"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[Producto_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_Nombre]"
+                      length="50"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[Producto_Nombre]"
+                      name="Producto_Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[Producto_PUnitario]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_PUnitario]"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[Producto_PUnitario]"
+                      name="Producto_PUnitario"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[CategoriaProducto_Codigo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].ExternalColumns[CategoriaProducto_Codigo]"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[CategoriaProducto_Codigo]"
+                      name="CategoriaProducto_Codigo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[ProveedorNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].ExternalColumns[ProveedorNombre]"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].Columns[ProveedorNombre]"
+                      name="ProveedorNombre"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_Codigo]"
+                      dataType="i4"
+                      name="Producto_Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Producto_Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].ExternalColumns[Producto_PUnitario]"
+                      dataType="numeric"
+                      name="Producto_PUnitario"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].ExternalColumns[CategoriaProducto_Codigo]"
+                      dataType="i4"
+                      name="CategoriaProducto_Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB].ExternalColumns[ProveedorNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="ProveedorNombre" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_Codigo]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_Codigo]"
+                      name="Producto_Codigo" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_Nombre]"
+                      name="Producto_Nombre" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_PUnitario]"
+                      dataType="numeric"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[Producto_PUnitario]"
+                      name="Producto_PUnitario"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[CategoriaProducto_Codigo]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[CategoriaProducto_Codigo]"
+                      name="CategoriaProducto_Codigo" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[ProveedorNombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[ProveedorNombre]"
+                      name="ProveedorNombre" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DTF Load Dim Producto.Paths[Prodcutos Nuevos]"
+              endId="Package\DTF Load Dim Producto\Búsqueda.Inputs[Entrada de búsqueda]"
+              name="Prodcutos Nuevos"
+              startId="Package\DTF Load Dim Producto\División condicional.Outputs[Prodcutos Nuevos]" />
+            <path
+              refId="Package\DTF Load Dim Producto.Paths[Productos Modificados]"
+              endId="Package\DTF Load Dim Producto\Búsqueda 1.Inputs[Entrada de búsqueda]"
+              name="Productos Modificados"
+              startId="Package\DTF Load Dim Producto\División condicional.Outputs[Productos Modificados]" />
+            <path
+              refId="Package\DTF Load Dim Producto.Paths[Salida de combinación de mezcla]"
+              endId="Package\DTF Load Dim Producto\División condicional.Inputs[Entrada de división condicional]"
+              name="Salida de combinación de mezcla"
+              startId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Outputs[Salida de combinación de mezcla]" />
+            <path
+              refId="Package\DTF Load Dim Producto.Paths[Salida de entradas coincidentes de búsqueda]"
+              endId="Package\DTF Load Dim Producto\Destino Producto_Mart.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\DTF Load Dim Producto\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\DTF Load Dim Producto.Paths[Salida de entradas coincidentes de búsqueda1]"
+              endId="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\DTF Load Dim Producto\Búsqueda 1.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\DTF Load Dim Producto.Paths[Salida de origen de OLE DB]"
+              endId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada izquierda de combinación de mezcla]"
+              name="Salida de origen de OLE DB"
+              startId="Package\DTF Load Dim Producto\Stage Product.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\DTF Load Dim Producto.Paths[Salida de origen de OLE DB1]"
+              endId="Package\DTF Load Dim Producto\Left Join by Producto_Codigo.Inputs[Entrada derecha de combinación de mezcla]"
+              name="Salida de origen de OLE DB"
+              startId="Package\DTF Load Dim Producto\Datamart Product.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Delete table Stg_DimProducto"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{4B4EE87B-F4B7-4EE4-99DE-9E5733A3CE4D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Delete table Stg_DimProducto"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1832ACBC-C3A5-44FD-9AA5-3DD3314E6010}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Stage_Dim_Empleado" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Update Dim_Producto"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5B115211-F8BF-4F0E-B786-B55515F39A86}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Update Dim_Producto"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1832ACBC-C3A5-44FD-9AA5-3DD3314E6010}"
+          SQLTask:SqlStatementSource="UPDATE CM&#xA;SET CM.[Cliente_Codigo]    = CS.[Cliente_Codigo]    ,&#xA;&#x9;CM.[Cliente_Nombre]    = CS.[Cliente_Nombre]    ,&#xA;&#x9;CM.[Cliente_Compania]  = CS.[Cliente_Compania]  ,&#xA;&#x9;CM.[Cliente_Direccion] = CS.[Cliente_Direccion] ,&#xA;&#x9;CM.[Cliente_Ciudad]    = CS.[Cliente_Ciudad]    ,&#xA;&#x9;CM.[Cliente_Region]    = CS.[Cliente_Region]    ,&#xA;&#x9;CM.[Cliente_Pais] &#x9;   = CS.[Cliente_Pais] &#x9;   &#xA;FROM Stage_Dim_Cliente CS&#xA;INNER JOIN Northwind_Mart.dbo.Dim_Cliente CM ON CS.Cliente_Codigo = CM.Cliente_Codigo" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4EAFCE0D-DC49-488C-895C-07C78E5DC254}"
+      DTS:From="Package\SQL Delete table Stg_DimProducto"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DTF Load Dim Producto" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D0CA83E3-8FD1-4F6F-8029-88CCADA755D4}"
+      DTS:From="Package\DTF Load Dim Producto"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL Update Dim_Producto" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="191,42"
+          Id="Package\DTF Load Dim Producto"
+          TopLeft="237,128" />
+        <NodeLayout
+          Size="242,42"
+          Id="Package\SQL Delete table Stg_DimProducto"
+          TopLeft="216,53" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\SQL Update Dim_Producto"
+          TopLeft="232,205" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="334.75,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="333.25,170">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DTF Load Dim Producto">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="145,42"
+          Id="Package\DTF Load Dim Producto\Stage Product"
+          TopLeft="205.333333333333,35" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\DTF Load Dim Producto\Left Join by Producto_Codigo"
+          TopLeft="278.583333333334,107.75" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DTF Load Dim Producto\División condicional"
+          TopLeft="303.583333333334,181" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto"
+          TopLeft="457.904761904762,354.619047619048" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\DTF Load Dim Producto\Datamart Product"
+          TopLeft="435.333333333334,35" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DTF Load Dim Producto\Destino Producto_Mart"
+          TopLeft="243.777777777778,354.555555555556" />
+        <EdgeLayout
+          Id="Package\DTF Load Dim Producto.Paths[Salida de origen de OLE DB1]"
+          TopLeft="516.333333333333,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-95.0833333333334,30.75"
+              Start="0,0"
+              End="-95.0833333333334,23.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.3143382352941" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.3143382352941"
+                    Point2="0,18.3143382352941"
+                    Point3="-4,18.3143382352941" />
+                  <mssgle:LineSegment
+                    End="-91.0833333333334,18.3143382352941" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-91.0833333333334,18.3143382352941"
+                    Point2="-95.0833333333334,18.3143382352941"
+                    Point3="-95.0833333333334,22.3143382352941" />
+                  <mssgle:LineSegment
+                    End="-95.0833333333334,23.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DTF Load Dim Producto.Paths[Salida de origen de OLE DB]"
+          TopLeft="277.833333333334,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.0833333333333,30.75"
+              Start="0,0"
+              End="74.0833333333333,23.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.3143382352941" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.3143382352941"
+                    Point2="0,18.3143382352941"
+                    Point3="4,18.3143382352941" />
+                  <mssgle:LineSegment
+                    End="70.0833333333333,18.3143382352941" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.0833333333333,18.3143382352941"
+                    Point2="74.0833333333333,18.3143382352941"
+                    Point3="74.0833333333333,22.3143382352941" />
+                  <mssgle:LineSegment
+                    End="74.0833333333333,23.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DTF Load Dim Producto.Paths[Salida de combinación de mezcla]"
+          TopLeft="387.833333333334,149.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.25"
+              Start="0,0"
+              End="0,23.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="125,42"
+          Id="Package\DTF Load Dim Producto\Búsqueda"
+          TopLeft="270,261.111111111111" />
+        <EdgeLayout
+          Id="Package\DTF Load Dim Producto.Paths[Prodcutos Nuevos]"
+          TopLeft="389.083333333334,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-56.5833333333337,38.111111111111"
+              Start="0,0"
+              End="-56.5833333333337,30.611111111111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.0555555555555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.0555555555555"
+                    Point2="0,19.0555555555555"
+                    Point3="-4,19.0555555555555" />
+                  <mssgle:LineSegment
+                    End="-52.5833333333337,19.0555555555555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-52.5833333333337,19.0555555555555"
+                    Point2="-56.5833333333337,19.0555555555555"
+                    Point3="-56.5833333333337,23.0555555555555" />
+                  <mssgle:LineSegment
+                    End="-56.5833333333337,30.611111111111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-68.3292447916669,24.0555555555555,80.07515625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="134,42"
+          Id="Package\DTF Load Dim Producto\Búsqueda 1"
+          TopLeft="465.555555555556,257.777777777778" />
+        <EdgeLayout
+          Id="Package\DTF Load Dim Producto.Paths[Productos Modificados]"
+          TopLeft="416.25,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="116.305555555555,34.7777777777778"
+              Start="0,0"
+              End="116.305555555555,27.2777777777778">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.1045448693189" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.1045448693189"
+                    Point2="0,14.1045448693189"
+                    Point3="4,14.1045448693189" />
+                  <mssgle:LineSegment
+                    End="112.305555555555,14.1045448693189" />
+                  <mssgle:CubicBezierSegment
+                    Point1="112.305555555555,14.1045448693189"
+                    Point2="116.305555555555,14.1045448693189"
+                    Point3="116.305555555555,18.1045448693189" />
+                  <mssgle:LineSegment
+                    End="116.305555555555,27.2777777777778" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="8.45019965277758,19.1045448693189,99.40515625,9.7978515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DTF Load Dim Producto.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="334.638888888889,303.111111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.4444444444445"
+              Start="0,0"
+              End="0,43.9444444444445">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.9444444444445" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,15.8745659722223,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DTF Load Dim Producto.Paths[Salida de entradas coincidentes de búsqueda1]"
+          TopLeft="532.555555555556,299.777777777778">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="27.8492063492067,54.8412698412697"
+              Start="0,0"
+              End="27.8492063492067,47.3412698412697">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.4206349206349" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.4206349206349"
+                    Point2="0,27.4206349206349"
+                    Point3="4,27.4206349206349" />
+                  <mssgle:LineSegment
+                    End="23.8492063492067,27.4206349206349" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.8492063492067,27.4206349206349"
+                    Point2="27.8492063492067,27.4206349206349"
+                    Point3="27.8492063492067,31.4206349206349" />
+                  <mssgle:LineSegment
+                    End="27.8492063492067,47.3412698412697" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-85.8944202628966,32.4206349206349,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\DTF Load Dim Producto.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="192,42"
+          Id="Package\DTF Load Dim Producto.EventHandlers[OnPreExecute]\Task Get Last Execution"
+          TopLeft="303,76" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\DTF Load Dim Producto\Stage Product">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DTF Load Dim Producto\Destino Stg_Dim_Producto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DTF Load Dim Producto\Datamart Product">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DTF Load Dim Producto\Destino Producto_Mart">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DTF Load Dim Producto\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Categoria]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DTF Load Dim Producto\Búsqueda 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Categoria]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

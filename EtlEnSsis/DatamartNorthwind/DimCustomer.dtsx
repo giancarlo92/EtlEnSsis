@@ -1,0 +1,2050 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/24/2018 11:30:38 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CA305-ST"
+  DTS:CreatorName="CA305-ST\SQLSERV"
+  DTS:DTSID="{36702829-3DD7-4F85-9A9A-7FFD1D659A27}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="10250"
+  DTS:ObjectName="DimCustomer"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{E5CE7EFB-D112-4C80-9E5F-27AF1480B1AB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F464E438-BC80-41FA-97BE-0031DCB22CBD}"
+      DTS:ObjectName="LocalHost.Northwind_Mart">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Northwind_Mart;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Northwind_Metadata]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E29E1218-15C4-4A82-A90F-F98F3C49C153}"
+      DTS:ObjectName="LocalHost.Northwind_Metadata">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Northwind_Metadata;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1F6E984F-C296-4311-9F9E-3B82FC5481C3}"
+      DTS:ObjectName="LocalHost.Northwind_Stage">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Northwind_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4264CC8D-6A29-4E2D-A7A5-66DCA60BCBC9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="IdExecution">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DTF Load Dim Customer"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{7ECE295D-0032-43DA-9EF8-8979F41FA76E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DTF Load Dim Customer"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\DTF Load Dim Customer.EventHandlers[OnError]"
+          DTS:CreationName="OnError"
+          DTS:DTSID="{84985BAB-3D32-431A-BBE6-507B2CABD2F4}"
+          DTS:EventID="0"
+          DTS:EventName="OnError"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="La propiedad de propagación del evento"
+              DTS:DTSID="{8CD8F19B-8ABF-4166-BFE0-99F1ADE14684}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables />
+        </DTS:EventHandler>
+        <DTS:EventHandler
+          DTS:refId="Package\DTF Load Dim Customer.EventHandlers[OnPreExecute]"
+          DTS:CreationName="OnPreExecute"
+          DTS:DTSID="{8804F715-0539-48DE-B7F7-0B8A6BD81242}"
+          DTS:EventID="0"
+          DTS:EventName="OnPreExecute"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="La propiedad de propagación del evento"
+              DTS:DTSID="{CF6D7088-ED74-4445-855A-7B38A2BBBA0F}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\DTF Load Dim Customer.EventHandlers[OnPreExecute]\Task Get Last Execution"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{4c01c5f0-e6ed-4340-b82c-a366698d2299}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Task Get Last Execution"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{E29E1218-15C4-4A82-A90F-F98F3C49C153}"
+                  SQLTask:SqlStatementSource="INSERT INTO EtlExecution&#xA;(Descripcion, EtlLoad)&#xA;VALUES&#xA;(?, GETDATE());&#xA;&#xA;SELECT @@IDENTITY AS IdExecution"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="IdExecution"
+                    SQLTask:DtsVariableName="User::IdExecution" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="System::PackageName"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="130"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DTF Load Dim Customer\DataMart Customer"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="DataMart Customer"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Cliente_SKey]
+      ,[Cliente_Codigo]
+      ,[Cliente_Nombre]
+      ,[Cliente_Compania]
+      ,[Cliente_Direccion]
+      ,[Cliente_Ciudad]
+      ,[Cliente_Region]
+      ,[Cliente_Pais]
+FROM [dbo].[Dim_Cliente]
+ORDER BY [Cliente_Codigo]</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DTF Load Dim Customer\DataMart Customer.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB]"
+                  isSorted="true"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_SKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_SKey]"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_SKey]"
+                      name="Cliente_SKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Codigo]"
+                      length="5"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Codigo]"
+                      name="Cliente_Codigo"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Nombre]"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Nombre]"
+                      name="Cliente_Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Compania]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Compania]"
+                      length="30"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Compania]"
+                      name="Cliente_Compania"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Direccion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Direccion]"
+                      length="60"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Direccion]"
+                      name="Cliente_Direccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Ciudad]"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Ciudad]"
+                      name="Cliente_Ciudad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Region]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Region]"
+                      length="25"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Region]"
+                      name="Cliente_Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Pais]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Pais]"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Pais]"
+                      name="Cliente_Pais"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_SKey]"
+                      dataType="i4"
+                      name="Cliente_SKey" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Cliente_Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="Cliente_Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Cliente_Compania" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Direccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="Cliente_Direccion" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Cliente_Ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Cliente_Region" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Cliente_Pais" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_SKey]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_SKey]"
+                      name="Cliente_SKey" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Codigo]"
+                      name="Cliente_Codigo" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Nombre]"
+                      name="Cliente_Nombre" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Compania]"
+                      name="Cliente_Compania" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Direccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Direccion]"
+                      name="Cliente_Direccion" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Ciudad]"
+                      name="Cliente_Ciudad" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Region]"
+                      name="Cliente_Region" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Pais]"
+                      name="Cliente_Pais" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Customer\Destino de OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino de OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[Dim_Cliente]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DTF Load Dim Customer\Destino de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Codigo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Cliente_Codigo"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Codigo]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Codigo]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="Cliente_Nombre"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Nombre]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Nombre]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Compania]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="Cliente_Compania"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Compania]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Compania]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Direccion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="Cliente_Direccion"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Direccion]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Direccion]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cliente_Ciudad"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Ciudad]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Ciudad]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cliente_Region"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Region]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Region]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Pais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cliente_Pais"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Pais]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Pais]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_SKey]"
+                      dataType="i4"
+                      name="Cliente_SKey" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Cliente_Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="Cliente_Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Cliente_Compania" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Direccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="Cliente_Direccion" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Cliente_Ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Cliente_Region" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Cliente_Pais" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Customer\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Customer\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Customer\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Customer\Destino de OLE DB 1"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino de OLE DB 1"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[Stage_Dim_Cliente]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Codigo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Cliente_Codigo"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Codigo]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Codigo]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="Cliente_Nombre"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Nombre]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Nombre]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Compania]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="Cliente_Compania"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Compania]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Compania]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Direccion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="Cliente_Direccion"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Direccion]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Direccion]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cliente_Ciudad"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Ciudad]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Ciudad]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cliente_Region"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Region]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Region]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].Columns[Cliente_Pais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cliente_Pais"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Pais]"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Pais]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Cliente_Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="Cliente_Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Cliente_Compania" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Direccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="Cliente_Direccion" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Cliente_Ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Cliente_Region" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cliente_Pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Cliente_Pais" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Customer\División condicional"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Enruta filas de datos a diferentes salidas según el contenido de los datos. Se usan condiciones (expresiones de SSIS) para especificar las filas que se van a enrutar. Por ejemplo, se usa para separar los registros que deben limpiarse de los registros listos para ser cargados o para enrutar solamente un subconjunto de registros."
+              name="División condicional"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DTF Load Dim Customer\División condicional.Inputs[Entrada de división condicional]"
+                  description="Entrada en la transformación División condicional"
+                  name="Entrada de división condicional">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\División condicional.Inputs[Entrada de división condicional].Columns[Cliente_Codigo_Mart]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Cliente_Codigo_Mart"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Codigo_Mart]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\División condicional.Inputs[Entrada de división condicional].Columns[Cliente_Ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cliente_Ciudad"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Ciudad]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\División condicional.Inputs[Entrada de división condicional].Columns[Cliente_Ciudad_Mart]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cliente_Ciudad_Mart"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Ciudad_Mart]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Customer\División condicional.Outputs[Clientes Nuevos]"
+                  description="Salida 1 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Clientes Nuevos"
+                  synchronousInputId="Package\DTF Load Dim Customer\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">[ISNULL](#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Codigo_Mart]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(Cliente_Codigo_Mart)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Customer\División condicional.Outputs[Clientes Modificados]"
+                  description="Salida 2 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Clientes Modificados"
+                  synchronousInputId="Package\DTF Load Dim Customer\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Ciudad]} != #{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Ciudad_Mart]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Cliente_Ciudad != Cliente_Ciudad_Mart</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Customer\División condicional.Outputs[Salida predeterminada de división condicional]"
+                  description="Salida predeterminada de la transformación División condicional"
+                  exclusionGroup="1"
+                  name="Salida predeterminada de división condicional"
+                  synchronousInputId="Package\DTF Load Dim Customer\División condicional.Inputs[Entrada de división condicional]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Customer\División condicional.Outputs[Salida de error de división condicional]"
+                  description="Salida de error de la transformación División condicional"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de división condicional"
+                  synchronousInputId="Package\DTF Load Dim Customer\División condicional.Inputs[Entrada de división condicional]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Customer\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Customer\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Combinación de mezcla;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina dos flujos de datos ordenados en uno solo mediante la combinación FULL, LEFT o INNER. Se recomienda esta transformación cuando se pueden ordenar los flujos de datos en sus orígenes."
+              name="Left Join By Cliente Codigo"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de combinación que se debe realizar."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número de columnas de la clave de ordenación."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores NULL se tratan como valores iguales."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indica la cantidad máxima solicitada de búferes por entrada antes del bloqueo."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada izquierda de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Codigo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Cliente_Codigo"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Codigo]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="Cliente_Nombre"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Nombre]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Compania]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="Cliente_Compania"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Compania]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Direccion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="Cliente_Direccion"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Direccion]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cliente_Ciudad"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Ciudad]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cliente_Region"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Region]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Pais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cliente_Pais"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Pais]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Postal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Cliente_Postal"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Postal]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada derecha de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Codigo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Cliente_Codigo"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Codigo]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cliente_Ciudad"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Ciudad]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="Cliente_Nombre"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Nombre]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Compania]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Cliente_Compania"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Compania]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Direccion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="Cliente_Direccion"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Direccion]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="Cliente_Region"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Region]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Pais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Cliente_Pais"
+                      lineageId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Pais]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla]"
+                  isSorted="true"
+                  name="Salida de combinación de mezcla">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Codigo]"
+                      name="Cliente_Codigo"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Codigo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Nombre]"
+                      name="Cliente_Nombre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Nombre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Compania]"
+                      name="Cliente_Compania">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Compania]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Direccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Direccion]"
+                      name="Cliente_Direccion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Direccion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Ciudad]"
+                      name="Cliente_Ciudad">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Ciudad]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Region]"
+                      name="Cliente_Region">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Region]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Pais]"
+                      name="Cliente_Pais">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Pais]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Postal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Postal]"
+                      name="Cliente_Postal">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[Cliente_Postal]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Codigo_Mart]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Codigo_Mart]"
+                      name="Cliente_Codigo_Mart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Codigo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Ciudad_Mart]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Ciudad_Mart]"
+                      name="Cliente_Ciudad_Mart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Ciudad]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Nombre_Mart]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Nombre_Mart]"
+                      name="Cliente_Nombre_Mart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Nombre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Compania_Mart]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Compania_Mart]"
+                      name="Cliente_Compania_Mart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Compania]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Direccion_Mart]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Direccion_Mart]"
+                      name="Cliente_Direccion_Mart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Direccion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Region_Mart]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Region_Mart]"
+                      name="Cliente_Region_Mart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Region]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Pais_Mart]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla].Columns[Cliente_Pais_Mart]"
+                      name="Cliente_Pais_Mart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Cliente_Pais]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Customer\Stage Customer"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Stage Customer"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[Stg_Cliente]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Cliente_Codigo]
+      ,[Cliente_Nombre]
+      ,[Cliente_Compania]
+      ,[Cliente_Direccion]
+      ,[Cliente_Ciudad]
+      ,[Cliente_Region]
+      ,[Cliente_Pais]
+      ,[Cliente_Postal]
+  FROM [dbo].[Stg_Cliente]
+ORDER BY [Cliente_Codigo] ASC</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DTF Load Dim Customer\Stage Customer.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB]"
+                  isSorted="true"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Codigo]"
+                      length="5"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Codigo]"
+                      name="Cliente_Codigo"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Nombre]"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Nombre]"
+                      name="Cliente_Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Compania]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Compania]"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Compania]"
+                      name="Cliente_Compania"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Direccion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Direccion]"
+                      length="60"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Direccion]"
+                      name="Cliente_Direccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Ciudad]"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Ciudad]"
+                      name="Cliente_Ciudad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Region]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Region]"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Region]"
+                      name="Cliente_Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Pais]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Pais]"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Pais]"
+                      name="Cliente_Pais"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Postal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Postal]"
+                      length="10"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].Columns[Cliente_Postal]"
+                      name="Cliente_Postal"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Cliente_Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="Cliente_Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="Cliente_Compania" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Direccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="Cliente_Direccion" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Cliente_Ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Cliente_Region" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Cliente_Pais" />
+                    <externalMetadataColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB].ExternalColumns[Cliente_Postal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Cliente_Postal" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Codigo]"
+                      name="Cliente_Codigo" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Nombre]"
+                      name="Cliente_Nombre" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Compania]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Compania]"
+                      name="Cliente_Compania" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Direccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Direccion]"
+                      name="Cliente_Direccion" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Ciudad]"
+                      name="Cliente_Ciudad" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Region]"
+                      name="Cliente_Region" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Pais]"
+                      name="Cliente_Pais" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Postal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[Cliente_Postal]"
+                      name="Cliente_Postal" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DTF Load Dim Customer.Paths[Clientes Modificados]"
+              endId="Package\DTF Load Dim Customer\Destino de OLE DB 1.Inputs[Entrada de destino de OLE DB]"
+              name="Clientes Modificados"
+              startId="Package\DTF Load Dim Customer\División condicional.Outputs[Clientes Modificados]" />
+            <path
+              refId="Package\DTF Load Dim Customer.Paths[Clientes Nuevos]"
+              endId="Package\DTF Load Dim Customer\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+              name="Clientes Nuevos"
+              startId="Package\DTF Load Dim Customer\División condicional.Outputs[Clientes Nuevos]" />
+            <path
+              refId="Package\DTF Load Dim Customer.Paths[Salida de combinación de mezcla]"
+              endId="Package\DTF Load Dim Customer\División condicional.Inputs[Entrada de división condicional]"
+              name="Salida de combinación de mezcla"
+              startId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Outputs[Salida de combinación de mezcla]" />
+            <path
+              refId="Package\DTF Load Dim Customer.Paths[Salida de origen de OLE DB]"
+              endId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada izquierda de combinación de mezcla]"
+              name="Salida de origen de OLE DB"
+              startId="Package\DTF Load Dim Customer\Stage Customer.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\DTF Load Dim Customer.Paths[Salida de origen de OLE DB1]"
+              endId="Package\DTF Load Dim Customer\Left Join By Cliente Codigo.Inputs[Entrada derecha de combinación de mezcla]"
+              name="Salida de origen de OLE DB"
+              startId="Package\DTF Load Dim Customer\DataMart Customer.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Delete table Stg_DimCliente"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{33290411-E8A1-449E-A91B-8D01A52DBAE4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Delete table Stg_DimCliente"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1F6E984F-C296-4311-9F9E-3B82FC5481C3}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Stage_Dim_Cliente" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Update Dim_Cliente"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E1011E69-E715-4A2F-B9F9-D4E1E3455F7A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Update Dim_Cliente"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1F6E984F-C296-4311-9F9E-3B82FC5481C3}"
+          SQLTask:SqlStatementSource="UPDATE CM&#xA;SET CM.[Cliente_Codigo]    = CS.[Cliente_Codigo]    ,&#xA;&#x9;CM.[Cliente_Nombre]    = CS.[Cliente_Nombre]    ,&#xA;&#x9;CM.[Cliente_Compania]  = CS.[Cliente_Compania]  ,&#xA;&#x9;CM.[Cliente_Direccion] = CS.[Cliente_Direccion] ,&#xA;&#x9;CM.[Cliente_Ciudad]    = CS.[Cliente_Ciudad]    ,&#xA;&#x9;CM.[Cliente_Region]    = CS.[Cliente_Region]    ,&#xA;&#x9;CM.[Cliente_Pais] &#x9;   = CS.[Cliente_Pais] &#x9;   &#xA;FROM Stage_Dim_Cliente CS&#xA;INNER JOIN Northwind_Mart.dbo.Dim_Cliente CM ON CS.Cliente_Codigo = CM.Cliente_Codigo" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{AF6FFFC0-7358-4C8A-A00A-9B78749AAF1A}"
+      DTS:From="Package\SQL Delete table Stg_DimCliente"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DTF Load Dim Customer" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{E7A2AFB2-1968-412E-952A-21F152529108}"
+      DTS:From="Package\DTF Load Dim Customer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL Update Dim_Cliente" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="194,42"
+          Id="Package\DTF Load Dim Customer"
+          TopLeft="237,128" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\SQL Delete table Stg_DimCliente"
+          TopLeft="225,53" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\SQL Update Dim_Cliente"
+          TopLeft="232,205" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="337.75,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="331.75,170">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DTF Load Dim Customer">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DTF Load Dim Customer\División condicional"
+          TopLeft="300,309" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\DTF Load Dim Customer\Destino de OLE DB"
+          TopLeft="277.777777777778,419" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\DTF Load Dim Customer\Destino de OLE DB 1"
+          TopLeft="545.555555555556,415.555555555556" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\DTF Load Dim Customer\Left Join By Cliente Codigo"
+          TopLeft="287,235" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\DTF Load Dim Customer\DataMart Customer"
+          TopLeft="432.888888888889,123" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\DTF Load Dim Customer\Stage Customer"
+          TopLeft="211.888888888889,117.777777777778" />
+        <EdgeLayout
+          Id="Package\DTF Load Dim Customer.Paths[Salida de origen de OLE DB1]"
+          TopLeft="517.888888888889,165">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-95.5555555555556,70"
+              Start="0,0"
+              End="-95.5555555555556,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.674733785092" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.674733785092"
+                    Point2="0,41.674733785092"
+                    Point3="-4,41.674733785092" />
+                  <mssgle:LineSegment
+                    End="-91.5555555555556,41.674733785092" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-91.5555555555556,41.674733785092"
+                    Point2="-95.5555555555556,41.674733785092"
+                    Point3="-95.5555555555556,45.674733785092" />
+                  <mssgle:LineSegment
+                    End="-95.5555555555556,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DTF Load Dim Customer.Paths[Salida de origen de OLE DB]"
+          TopLeft="288.888888888889,159.777777777778">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="67.7777777777777,75.2222222222222"
+              Start="0,0"
+              End="67.7777777777777,67.7222222222222">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.783801226202" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.783801226202"
+                    Point2="0,44.783801226202"
+                    Point3="4,44.783801226202" />
+                  <mssgle:LineSegment
+                    End="63.7777777777777,44.783801226202" />
+                  <mssgle:CubicBezierSegment
+                    Point1="63.7777777777777,44.783801226202"
+                    Point2="67.7777777777777,44.783801226202"
+                    Point3="67.7777777777777,48.783801226202" />
+                  <mssgle:LineSegment
+                    End="67.7777777777777,67.7222222222222" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DTF Load Dim Customer.Paths[Salida de combinación de mezcla]"
+          TopLeft="387.5,277">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DTF Load Dim Customer.Paths[Clientes Nuevos]"
+          TopLeft="360.055555555556,351">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68"
+              Start="0,0"
+              End="0,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-35.74509765625,25.37548828125,71.4901953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DTF Load Dim Customer.Paths[Clientes Modificados]"
+          TopLeft="412.666666666667,351">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="221.388888888889,64.555555555556"
+              Start="0,0"
+              End="221.388888888889,57.055555555556">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.1812797734005" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.1812797734005"
+                    Point2="0,26.1812797734005"
+                    Point3="4,26.1812797734005" />
+                  <mssgle:LineSegment
+                    End="217.388888888889,26.1812797734005" />
+                  <mssgle:CubicBezierSegment
+                    Point1="217.388888888889,26.1812797734005"
+                    Point2="221.388888888889,26.1812797734005"
+                    Point3="221.388888888889,30.1812797734005" />
+                  <mssgle:LineSegment
+                    End="221.388888888889,57.055555555556" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="65.2843467881947,31.1812797734005,90.8201953125,9.7978515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\DTF Load Dim Customer.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="192,42"
+          Id="Package\DTF Load Dim Customer.EventHandlers[OnPreExecute]\Task Get Last Execution"
+          TopLeft="303,76" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\DTF Load Dim Customer\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DTF Load Dim Customer\Destino de OLE DB 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DTF Load Dim Customer\DataMart Customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DTF Load Dim Customer\Stage Customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
