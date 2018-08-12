@@ -7,12 +7,12 @@
   DTS:CreatorName="CA305-ST\SQLSERV"
   DTS:DTSID="{63F6D850-06BF-4D04-B28C-2F70412FDFE5}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LastModifiedProductVersion="14.0.3002.107"
   DTS:LocaleID="10250"
   DTS:ObjectName="DimEmployee"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{4ABB4353-AEC9-4EEB-A849-86467F68AE63}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{4CD3D8E2-4B75-481C-B5F5-F684779C14B7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -170,7 +170,7 @@
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Empleado_SKey]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [Empleado_SKey]
       ,[Empleado_Codigo]
       ,[Empleado_NombreCompleto]
       ,[Empleado_Direccion]
@@ -424,7 +424,7 @@ ORDER BY 2 ASC</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -612,7 +612,7 @@ ORDER BY 2 ASC</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -646,8 +646,8 @@ ORDER BY 2 ASC</property>
               <connections>
                 <connection
                   refId="Package\DTF Load Dim Empleados\Destino Stg_Dim_Empleado.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -785,17 +785,24 @@ ORDER BY 2 ASC</property>
                   name="Entrada de división condicional">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DTF Load Dim Empleados\División condicional.Inputs[Entrada de división condicional].Columns[Empleado_Nombre]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="Empleado_Nombre"
-                      lineageId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[Empleado_Nombre]" />
-                    <inputColumn
                       refId="Package\DTF Load Dim Empleados\División condicional.Inputs[Entrada de división condicional].Columns[Empleado_Codigo_Mart]"
                       cachedDataType="i4"
                       cachedName="Empleado_Codigo_Mart"
                       lineageId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[Empleado_Codigo_Mart]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Empleados\División condicional.Inputs[Entrada de división condicional].Columns[HashColumn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="70"
+                      cachedName="HashColumn"
+                      lineageId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[HashColumn]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Empleados\División condicional.Inputs[Entrada de división condicional].Columns[HashColumn_Mart]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="70"
+                      cachedName="HashColumn_Mart"
+                      lineageId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[HashColumn_Mart]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -843,13 +850,13 @@ ORDER BY 2 ASC</property>
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
-                      name="Expression">#{Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[Empleado_Nombre]} != ""</property>
+                      name="Expression">#{Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[HashColumn]} != #{Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[HashColumn_Mart]}</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
                       expressionType="Notify"
-                      name="FriendlyExpression">Empleado_Nombre != ""</property>
+                      name="FriendlyExpression">HashColumn != HashColumn_Mart</property>
                     <property
                       dataType="System.Int32"
                       description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
@@ -888,6 +895,328 @@ ORDER BY 2 ASC</property>
                       refId="Package\DTF Load Dim Empleados\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\DTF Load Dim Empleados\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Empleados\Hash DM Empleado"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="Hash DM Empleado"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT Empleado_Codigo, CONVERT(VARCHAR(70), HASHBYTES('SHA2_256', CONCAT(Empleado_Codigo,Empleado_NombreCompleto,Empleado_Direccion,Empleado_Ciudad,Empleado_Region,Empleado_Pais)), 2) HashColumn FROM Dim_Empleado</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT Empleado_Codigo, CONVERT(VARCHAR(70), HASHBYTES('SHA2_256', CONCAT(Empleado_Codigo,Empleado_NombreCompleto,Empleado_Direccion,Empleado_Ciudad,Empleado_Region,Empleado_Pais)), 2) HashColumn FROM Dim_Empleado) [refTable]
+where [refTable].[Empleado_Codigo] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Empleado_Codigo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HashColumn" dataType="DT_STR" length="70" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\DTF Load Dim Empleados\Datamart Empleado.Outputs[Salida de origen de OLE DB].Columns[Empleado_Codigo]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DTF Load Dim Empleados\Hash DM Empleado.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Mart]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DTF Load Dim Empleados\Hash DM Empleado.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Empleados\Hash DM Empleado.Inputs[Entrada de búsqueda].Columns[Empleado_Codigo]"
+                      cachedDataType="i4"
+                      cachedName="Empleado_Codigo"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DTF Load Dim Empleados\Datamart Empleado.Outputs[Salida de origen de OLE DB].Columns[Empleado_Codigo]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">Empleado_Codigo</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Empleados\Hash DM Empleado.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\DTF Load Dim Empleados\Hash DM Empleado.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Empleados\Hash DM Empleado.Outputs[Salida de entradas coincidentes de búsqueda].Columns[HashColumn]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copiar columna"
+                      length="70"
+                      lineageId="Package\DTF Load Dim Empleados\Hash DM Empleado.Outputs[Salida de entradas coincidentes de búsqueda].Columns[HashColumn]"
+                      name="HashColumn"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">HashColumn</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Empleados\Hash DM Empleado.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\DTF Load Dim Empleados\Hash DM Empleado.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Empleados\Hash DM Empleado.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\DTF Load Dim Empleados\Hash DM Empleado.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Empleados\Hash DM Empleado.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Empleados\Hash DM Empleado.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Empleados\Hash DM Empleado.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Empleados\Hash DM Empleado.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DTF Load Dim Empleados\Hash Stage Empleado"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="Hash Stage Empleado"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT Empleado_Codigo, CONVERT(VARCHAR(70), HASHBYTES('SHA2_256', CONCAT(Empleado_Codigo,Empleado_NombreCompleto,Empleado_Direccion,Empleado_Ciudad,Empleado_Region,Empleado_Pais)), 2) HashColumn FROM Stg_Empleado</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT Empleado_Codigo, CONVERT(VARCHAR(70), HASHBYTES('SHA2_256', CONCAT(Empleado_Codigo,Empleado_NombreCompleto,Empleado_Direccion,Empleado_Ciudad,Empleado_Region,Empleado_Pais)), 2) HashColumn FROM Stg_Empleado) [refTable]
+where [refTable].[Empleado_Codigo] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Empleado_Codigo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HashColumn" dataType="DT_STR" length="70" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\DTF Load Dim Empleados\Stage Empleado.Outputs[Salida de origen de OLE DB].Columns[Empleado_Codigo]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind_Stage]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Inputs[Entrada de búsqueda].Columns[Empleado_Codigo]"
+                      cachedDataType="i4"
+                      cachedName="Empleado_Codigo"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DTF Load Dim Empleados\Stage Empleado.Outputs[Salida de origen de OLE DB].Columns[Empleado_Codigo]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">Empleado_Codigo</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Outputs[Salida de entradas coincidentes de búsqueda].Columns[HashColumn]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copiar columna"
+                      length="70"
+                      lineageId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Outputs[Salida de entradas coincidentes de búsqueda].Columns[HashColumn]"
+                      name="HashColumn"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">HashColumn</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -989,6 +1318,13 @@ ORDER BY 2 ASC</property>
                       cachedLength="10"
                       cachedName="Empleado_Postal"
                       lineageId="Package\DTF Load Dim Empleados\Stage Empleado.Outputs[Salida de origen de OLE DB].Columns[Empleado_Postal]" />
+                    <inputColumn
+                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[HashColumn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="70"
+                      cachedName="HashColumn"
+                      lineageId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Outputs[Salida de entradas coincidentes de búsqueda].Columns[HashColumn]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1004,40 +1340,12 @@ ORDER BY 2 ASC</property>
                       cachedSortKeyPosition="1"
                       lineageId="Package\DTF Load Dim Empleados\Datamart Empleado.Outputs[Salida de origen de OLE DB].Columns[Empleado_Codigo]" />
                     <inputColumn
-                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Empleado_NombreCompleto]"
+                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[HashColumn]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="70"
-                      cachedName="Empleado_NombreCompleto"
-                      lineageId="Package\DTF Load Dim Empleados\Datamart Empleado.Outputs[Salida de origen de OLE DB].Columns[Empleado_NombreCompleto]" />
-                    <inputColumn
-                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Empleado_Direccion]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="120"
-                      cachedName="Empleado_Direccion"
-                      lineageId="Package\DTF Load Dim Empleados\Datamart Empleado.Outputs[Salida de origen de OLE DB].Columns[Empleado_Direccion]" />
-                    <inputColumn
-                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Empleado_Ciudad]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="15"
-                      cachedName="Empleado_Ciudad"
-                      lineageId="Package\DTF Load Dim Empleados\Datamart Empleado.Outputs[Salida de origen de OLE DB].Columns[Empleado_Ciudad]" />
-                    <inputColumn
-                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Empleado_Region]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="15"
-                      cachedName="Empleado_Region"
-                      lineageId="Package\DTF Load Dim Empleados\Datamart Empleado.Outputs[Salida de origen de OLE DB].Columns[Empleado_Region]" />
-                    <inputColumn
-                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Empleado_Pais]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="15"
-                      cachedName="Empleado_Pais"
-                      lineageId="Package\DTF Load Dim Empleados\Datamart Empleado.Outputs[Salida de origen de OLE DB].Columns[Empleado_Pais]" />
+                      cachedName="HashColumn"
+                      lineageId="Package\DTF Load Dim Empleados\Hash DM Empleado.Outputs[Salida de entradas coincidentes de búsqueda].Columns[HashColumn]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1196,78 +1504,33 @@ ORDER BY 2 ASC</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[Empleado_NombreCompleto_Mart]"
+                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[HashColumn]"
                       codePage="1252"
                       dataType="str"
                       length="70"
-                      lineageId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[Empleado_NombreCompleto_Mart]"
-                      name="Empleado_NombreCompleto_Mart">
+                      lineageId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[HashColumn]"
+                      name="HashColumn">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="La columna de entrada asociada a esta columna de salida"
-                          name="InputColumnID">#{Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Empleado_NombreCompleto]}</property>
+                          name="InputColumnID">#{Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada izquierda de combinación de mezcla].Columns[HashColumn]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[Empleado_Direccion_Mart]"
+                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[HashColumn_Mart]"
                       codePage="1252"
                       dataType="str"
-                      length="120"
-                      lineageId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[Empleado_Direccion_Mart]"
-                      name="Empleado_Direccion_Mart">
+                      length="70"
+                      lineageId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[HashColumn_Mart]"
+                      name="HashColumn_Mart">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="La columna de entrada asociada a esta columna de salida"
-                          name="InputColumnID">#{Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Empleado_Direccion]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[Empleado_Ciudad_Mart]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      lineageId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[Empleado_Ciudad_Mart]"
-                      name="Empleado_Ciudad_Mart">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="La columna de entrada asociada a esta columna de salida"
-                          name="InputColumnID">#{Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Empleado_Ciudad]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[Empleado_Region_Mart]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      lineageId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[Empleado_Region_Mart]"
-                      name="Empleado_Region_Mart">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="La columna de entrada asociada a esta columna de salida"
-                          name="InputColumnID">#{Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Empleado_Region]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[Empleado_Pais_Mart]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      lineageId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla].Columns[Empleado_Pais_Mart]"
-                      name="Empleado_Pais_Mart">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="La columna de entrada asociada a esta columna de salida"
-                          name="InputColumnID">#{Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[Empleado_Pais]}</property>
+                          name="InputColumnID">#{Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla].Columns[HashColumn]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1300,7 +1563,7 @@ ORDER BY 2 ASC</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Empleado_Codigo]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [Empleado_Codigo]
       ,[Empleado_Apellido]
       ,[Empleado_Nombre]
       ,[Empleado_NombreCompleto]
@@ -1603,15 +1866,25 @@ ORDER BY 1 ASC</property>
               name="Salida de combinación de mezcla"
               startId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Outputs[Salida de combinación de mezcla]" />
             <path
-              refId="Package\DTF Load Dim Empleados.Paths[Salida de origen de OLE DB]"
-              endId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla]"
-              name="Salida de origen de OLE DB"
-              startId="Package\DTF Load Dim Empleados\Datamart Empleado.Outputs[Salida de origen de OLE DB]" />
-            <path
-              refId="Package\DTF Load Dim Empleados.Paths[Salida de origen de OLE DB1]"
+              refId="Package\DTF Load Dim Empleados.Paths[Salida de entradas coincidentes de búsqueda]"
               endId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada izquierda de combinación de mezcla]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\DTF Load Dim Empleados.Paths[Salida de entradas coincidentes de búsqueda1]"
+              endId="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo.Inputs[Entrada derecha de combinación de mezcla]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\DTF Load Dim Empleados\Hash DM Empleado.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\DTF Load Dim Empleados.Paths[Salida de origen de OLE DB]"
+              endId="Package\DTF Load Dim Empleados\Hash Stage Empleado.Inputs[Entrada de búsqueda]"
               name="Salida de origen de OLE DB"
               startId="Package\DTF Load Dim Empleados\Stage Empleado.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\DTF Load Dim Empleados.Paths[Salida de origen de OLE DB1]"
+              endId="Package\DTF Load Dim Empleados\Hash DM Empleado.Inputs[Entrada de búsqueda]"
+              name="Salida de origen de OLE DB"
+              startId="Package\DTF Load Dim Empleados\Datamart Empleado.Outputs[Salida de origen de OLE DB]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1630,7 +1903,7 @@ ORDER BY 1 ASC</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{82922EE7-CFF2-450D-AE51-93A84E71B6B8}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Stage_Dim_Empleados" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Stage_Dim_Empleado" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1647,7 +1920,7 @@ ORDER BY 1 ASC</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{82922EE7-CFF2-450D-AE51-93A84E71B6B8}"
-          SQLTask:SqlStatementSource="UPDATE CM&#xA;SET CM.[Cliente_Codigo]    = CS.[Cliente_Codigo]    ,&#xA;&#x9;CM.[Cliente_Nombre]    = CS.[Cliente_Nombre]    ,&#xA;&#x9;CM.[Cliente_Compania]  = CS.[Cliente_Compania]  ,&#xA;&#x9;CM.[Cliente_Direccion] = CS.[Cliente_Direccion] ,&#xA;&#x9;CM.[Cliente_Ciudad]    = CS.[Cliente_Ciudad]    ,&#xA;&#x9;CM.[Cliente_Region]    = CS.[Cliente_Region]    ,&#xA;&#x9;CM.[Cliente_Pais] &#x9;   = CS.[Cliente_Pais] &#x9;   &#xA;FROM Stage_Dim_Cliente CS&#xA;INNER JOIN Northwind_Mart.dbo.Dim_Cliente CM ON CS.Cliente_Codigo = CM.Cliente_Codigo" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE EM&#xA;SET&#x9;   EM.[Empleado_Codigo]&#x9;&#x9;&#x9; = ES.[Empleado_Codigo]&#xA;      ,EM.[Empleado_NombreCompleto]&#x9; = ES.[Empleado_NombreCompleto]&#xA;      ,EM.[Empleado_Direccion]&#x9;&#x9; = ES.[Empleado_Direccion]&#xA;      ,EM.[Empleado_Ciudad]&#x9;&#x9;&#x9; = ES.[Empleado_Ciudad]&#xA;      ,EM.[Empleado_Region]&#x9;&#x9;&#x9; = ES.[Empleado_Region]&#xA;      ,EM.[Empleado_Pais]            = ES.[Empleado_Pais]&#xA;FROM Stage_Dim_Empleado ES&#xA;INNER JOIN Northwind_Mart.dbo.Dim_Empleado EM ON ES.Empleado_Codigo = EM.Empleado_Codigo" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -1670,12 +1943,12 @@ ORDER BY 1 ASC</property>
       DTS:To="Package\SQL Update Dim_Empleados" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
-<!--If you manually edit this section and make a mistake, you can delete it. -->
-<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
 <Objects
   Version="8">
-  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
@@ -1747,110 +2020,86 @@ ORDER BY 1 ASC</property>
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="171,42"
-          Id="Package\DTF Load Dim Empleados\División condicional"
-          TopLeft="300,179" />
+          Id="Package\DTF Load Dim Empleados\Hash DM Empleado"
+          TopLeft="374,103" />
         <NodeLayout
-          Size="210,42"
-          Id="Package\DTF Load Dim Empleados\Destino Stg_Dim_Empleado"
-          TopLeft="517,263" />
+          Size="171,42"
+          Id="Package\DTF Load Dim Empleados\División condicional"
+          TopLeft="259,260" />
         <NodeLayout
           Size="155,42"
           Id="Package\DTF Load Dim Empleados\Stage Empleado"
-          TopLeft="187,26" />
+          TopLeft="153,25" />
         <NodeLayout
-          Size="191,42"
-          Id="Package\DTF Load Dim Empleados\Destino Empleado_Mart"
-          TopLeft="302,261" />
-        <NodeLayout
-          Size="172,42"
-          Id="Package\DTF Load Dim Empleados\Datamart Empleado"
-          TopLeft="407,27" />
+          Size="182,42"
+          Id="Package\DTF Load Dim Empleados\Hash Stage Empleado"
+          TopLeft="133,99" />
         <NodeLayout
           Size="221,42"
           Id="Package\DTF Load Dim Empleados\Left Join By Empleado_Codigo"
-          TopLeft="281,107" />
+          TopLeft="230,192" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\DTF Load Dim Empleados\Destino Empleado_Mart"
+          TopLeft="106,346" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\DTF Load Dim Empleados\Datamart Empleado"
+          TopLeft="373,26" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\DTF Load Dim Empleados\Destino Stg_Dim_Empleado"
+          TopLeft="403,348" />
         <EdgeLayout
-          Id="Package\DTF Load Dim Empleados.Paths[Salida de origen de OLE DB1]"
-          TopLeft="264.5,68">
+          Id="Package\DTF Load Dim Empleados.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="224,141">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="127,39"
+              EndConnector="81,51"
               Start="0,0"
-              End="127,31.5">
+              End="81,43.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.5" />
+                    End="0,26.3800539083558" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.5"
-                    Point2="0,19.5"
-                    Point3="4,19.5" />
+                    Point1="0,26.3800539083558"
+                    Point2="0,30.3800539083558"
+                    Point3="4,30.3800539083558" />
                   <mssgle:LineSegment
-                    End="123,19.5" />
+                    End="77,30.3800539083558" />
                   <mssgle:CubicBezierSegment
-                    Point1="123,19.5"
-                    Point2="127,19.5"
-                    Point3="127,23.5" />
+                    Point1="77,30.3800539083558"
+                    Point2="81,30.3800539083558"
+                    Point3="81,34.3800539083558" />
                   <mssgle:LineSegment
-                    End="127,31.5" />
+                    End="81,43.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DTF Load Dim Empleados.Paths[Salida de origen de OLE DB]"
-          TopLeft="493,69">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-66,38"
-              Start="0,0"
-              End="-66,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.6361185983827" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.6361185983827"
-                    Point2="0,22.6361185983827"
-                    Point3="-4,22.6361185983827" />
-                  <mssgle:LineSegment
-                    End="-62,22.6361185983827" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-62,22.6361185983827"
-                    Point2="-66,22.6361185983827"
-                    Point3="-66,26.6361185983827" />
-                  <mssgle:LineSegment
-                    End="-66,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-59.3190234375,35.3800539083558,199.638046875,12.1953125"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DTF Load Dim Empleados.Paths[Salida de combinación de mezcla]"
-          TopLeft="388.5,149">
+          TopLeft="342.5,234">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,30"
+              EndConnector="0,26"
               Start="0,0"
-              End="0,22.5">
+              End="0,18.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.5" />
+                    End="0,18.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1861,73 +2110,153 @@ ORDER BY 1 ASC</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DTF Load Dim Empleados.Paths[Empleados Nuevos]"
-          TopLeft="358.333333333333,221">
+          TopLeft="317.333333333333,302">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="39.1666666666667,40"
+              EndConnector="-115.833333333333,44"
               Start="0,0"
-              End="39.1666666666667,32.5">
+              End="-115.833333333333,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.2224797219003" />
+                    End="0,13.8447276940904" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.2224797219003"
-                    Point2="0,16.2224797219003"
-                    Point3="4,16.2224797219003" />
+                    Point1="0,13.8447276940904"
+                    Point2="0,17.8447276940904"
+                    Point3="-4,17.8447276940904" />
                   <mssgle:LineSegment
-                    End="35.1666666666667,16.2224797219003" />
+                    End="-111.833333333333,17.8447276940904" />
                   <mssgle:CubicBezierSegment
-                    Point1="35.1666666666667,16.2224797219003"
-                    Point2="39.1666666666667,16.2224797219003"
-                    Point3="39.1666666666667,20.2224797219003" />
+                    Point1="-111.833333333333,17.8447276940904"
+                    Point2="-115.833333333333,17.8447276940904"
+                    Point3="-115.833333333333,21.8447276940904" />
                   <mssgle:LineSegment
-                    End="39.1666666666667,32.5" />
+                    End="-115.833333333333,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-22.5892447916667,21.2224797219003,84.34515625,11.609375"
+              BoundingBox="-100.089244791667,22.8447276940904,84.34515625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DTF Load Dim Empleados.Paths[Empleados Modificados]"
-          TopLeft="412.666666666667,221">
+          TopLeft="371.666666666667,302">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="209.333333333333,42"
+              EndConnector="136.333333333333,46"
               Start="0,0"
-              End="209.333333333333,34.5">
+              End="136.333333333333,38.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.0336037079954" />
+                    End="0,14.6558516801854" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,13.0336037079954"
-                    Point2="0,17.0336037079954"
-                    Point3="4,17.0336037079954" />
+                    Point1="0,14.6558516801854"
+                    Point2="0,18.6558516801854"
+                    Point3="4,18.6558516801854" />
                   <mssgle:LineSegment
-                    End="205.333333333333,17.0336037079954" />
+                    End="132.333333333333,18.6558516801854" />
                   <mssgle:CubicBezierSegment
-                    Point1="205.333333333333,17.0336037079954"
-                    Point2="209.333333333333,17.0336037079954"
-                    Point3="209.333333333333,21.0336037079954" />
+                    Point1="132.333333333333,18.6558516801854"
+                    Point2="136.333333333333,18.6558516801854"
+                    Point3="136.333333333333,22.6558516801854" />
                   <mssgle:LineSegment
-                    End="209.333333333333,34.5" />
+                    End="136.333333333333,38.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="52.8290885416667,22.0336037079954,103.67515625,11.658203125"
+              BoundingBox="16.3290885416667,23.6558516801854,103.67515625,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DTF Load Dim Empleados.Paths[Salida de origen de OLE DB1]"
+          TopLeft="459.25,68">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DTF Load Dim Empleados.Paths[Salida de origen de OLE DB]"
+          TopLeft="227.25,67">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DTF Load Dim Empleados.Paths[Salida de entradas coincidentes de búsqueda1]"
+          TopLeft="459.5,145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-83.5,47"
+              Start="0,0"
+              End="-83.5,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9973045822102" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.9973045822102"
+                    Point2="0,27.9973045822102"
+                    Point3="-4,27.9973045822102" />
+                  <mssgle:LineSegment
+                    End="-79.5,27.9973045822102" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-79.5,27.9973045822102"
+                    Point2="-83.5,27.9973045822102"
+                    Point3="-83.5,31.9973045822102" />
+                  <mssgle:LineSegment
+                    End="-83.5,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-141.5690234375,32.9973045822102,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1947,21 +2276,54 @@ ORDER BY 1 ASC</property>
     </LayoutInfo>
   </DtsEventHandler>
   <PipelineComponentMetadata
-    design-time-name="Package\DTF Load Dim Empleados\Destino Stg_Dim_Empleado">
+    design-time-name="Package\DTF Load Dim Empleados\Hash DM Empleado">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DTF Load Dim Empleados\Stage Empleado">
     <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DTF Load Dim Empleados\Hash Stage Empleado">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -1985,6 +2347,19 @@ ORDER BY 1 ASC</property>
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DTF Load Dim Empleados\Destino Stg_Dim_Empleado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

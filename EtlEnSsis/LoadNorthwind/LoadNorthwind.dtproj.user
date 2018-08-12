@@ -6,7 +6,6 @@
       <Options>
         <ServerName>.</ServerName>
         <PathOnServer>/SSISDB/Load_Northwind/LoadNorthwind</PathOnServer>
-        <Run64BitRuntime>true</Run64BitRuntime>
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>

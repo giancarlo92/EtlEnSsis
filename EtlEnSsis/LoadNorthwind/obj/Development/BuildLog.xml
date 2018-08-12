@@ -2,43 +2,43 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>LoadNorthwind</Name>
-    <LastWriteTime>2018-07-08T18:08:38.7683102Z</LastWriteTime>
+    <LastWriteTime>2018-08-09T05:38:20.2729215Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>LoadProduct.dtsx</Name>
-      <LastWriteTime>2018-07-08T17:54:07.3218953Z</LastWriteTime>
+      <LastWriteTime>2018-08-09T05:54:10.3248999Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>LoadOrders.dtsx</Name>
-      <LastWriteTime>2018-07-08T17:54:07.3062704Z</LastWriteTime>
+      <LastWriteTime>2018-08-09T05:43:31.978673Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>LoadOrderDetails.dtsx</Name>
-      <LastWriteTime>2018-07-08T17:54:07.2750279Z</LastWriteTime>
+      <LastWriteTime>2018-08-09T05:40:35.002599Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>LoadMaster.dtsx</Name>
-      <LastWriteTime>2018-07-08T17:54:07.2593951Z</LastWriteTime>
+      <LastWriteTime>2018-08-09T05:49:49.4416491Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>LoadEmployee.dtsx</Name>
-      <LastWriteTime>2018-07-08T17:54:07.2437964Z</LastWriteTime>
+      <LastWriteTime>2018-08-09T05:38:20.1578446Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>LoadCustomers.dtsx</Name>
-      <LastWriteTime>2018-07-08T17:54:07.1968931Z</LastWriteTime>
+      <LastWriteTime>2018-08-09T05:35:51.0598412Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>LoadCategories.dtsx</Name>
-      <LastWriteTime>2018-07-08T18:07:42.7617544Z</LastWriteTime>
+      <LastWriteTime>2018-08-09T05:41:06.8222254Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

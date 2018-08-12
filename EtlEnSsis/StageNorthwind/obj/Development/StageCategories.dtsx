@@ -8,12 +8,12 @@
   DTS:DTSID="{9A655F22-CB5A-4F19-9AF8-B9E1D27467CA}"
   DTS:EnableConfig="True"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LastModifiedProductVersion="14.0.3002.107"
   DTS:LocaleID="10250"
   DTS:ObjectName="StageCategories"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{308160B8-956A-4638-A3A6-14E1235F89C7}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{2ED4BF9F-4E72-42BC-A895-8C80FECADB85}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -67,6 +67,15 @@
       <DTS:VariableValue
         DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D6292A34-9AFE-4B04-8E9F-0CCCFC31C7E9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TotalRegistros">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
@@ -113,7 +122,7 @@
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{96E290E4-96C4-4059-A8FF-FDB1ED311B43}"
-                  SQLTask:SqlStatementSource="INSERT INTO EtlExecution&#xA;(Descripcion, EtlLoad)&#xA;VALUES&#xA;(?, GETDATE());&#xA;&#xA;SELECT @@IDENTITY AS IdExecution"
+                  SQLTask:SqlStatementSource="INSERT INTO EtlExecution&#xA;(Descripcion, NombreUsuario, EtlLoad)&#xA;VALUES&#xA;(?, ?, GETDATE());&#xA;&#xA;SELECT @@IDENTITY AS IdExecution"
                   SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
                   <SQLTask:ResultBinding
                     SQLTask:ResultName="IdExecution"
@@ -122,7 +131,13 @@
                     SQLTask:ParameterName="0"
                     SQLTask:DtsVariableName="System::PackageName"
                     SQLTask:ParameterDirection="Input"
-                    SQLTask:DataType="130"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="System::UserName"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
                     SQLTask:ParameterSize="-1" />
                 </SQLTask:SqlTaskData>
               </DTS:ObjectData>
@@ -254,7 +269,7 @@
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -377,6 +392,44 @@
               </outputs>
             </component>
             <component
+              refId="Package\DTF Load to StageCategories\Multidifusión"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multidifusión;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Distribuye cada fila de entrada a cada una de las filas de una o varias salidas. Por ejemplo, se crea una bifurcación de un flujo de datos para realizar una copia de los datos de modo que se puedan enmascarar algunos valores antes de compartirlos con los asociados externos."
+              name="Multidifusión">
+              <inputs>
+                <input
+                  refId="Package\DTF Load to StageCategories\Multidifusión.Inputs[Entrada de Multidifusión 1]"
+                  name="Entrada de Multidifusión 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load to StageCategories\Multidifusión.Outputs[Salida de Multidifusión 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Salida de Multidifusión 1"
+                  synchronousInputId="Package\DTF Load to StageCategories\Multidifusión.Inputs[Entrada de Multidifusión 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load to StageCategories\Multidifusión.Outputs[Salida de multidifusión 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Salida de multidifusión 1"
+                  synchronousInputId="Package\DTF Load to StageCategories\Multidifusión.Inputs[Entrada de Multidifusión 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DTF Load to StageCategories\Multidifusión.Outputs[Salida de multidifusión 2]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Salida de multidifusión 2"
+                  synchronousInputId="Package\DTF Load to StageCategories\Multidifusión.Inputs[Entrada de Multidifusión 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\DTF Load to StageCategories\Origen de OLE DB"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
@@ -401,7 +454,7 @@
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [CategoryID]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [CategoryID]
       ,CONVERT(VARCHAR(15),[CategoryName]) AS CategoryName
 FROM [dbo].[Categories]
 WHERE EtlExecution = ?</property>
@@ -509,13 +562,52 @@ WHERE EtlExecution = ?</property>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\DTF Load to StageCategories\Recuento de filas"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Recuento de filas;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Cuenta las filas a medida que pasan por un flujo de datos. Por ejemplo, se usa el número de filas procesadas para determinar si deben o no realizarse operaciones de limpieza o actualizar el texto de un mensaje de correo electrónico para comunicar el estado de procesamiento."
+              name="Recuento de filas">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el recuento de filas."
+                  name="VariableName">User::TotalRegistros</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DTF Load to StageCategories\Recuento de filas.Inputs[Entrada de Recuento de filas 1]"
+                  hasSideEffects="true"
+                  name="Entrada de Recuento de filas 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DTF Load to StageCategories\Recuento de filas.Outputs[Salida de Recuento de filas 1]"
+                  name="Salida de Recuento de filas 1"
+                  synchronousInputId="Package\DTF Load to StageCategories\Recuento de filas.Inputs[Entrada de Recuento de filas 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
               refId="Package\DTF Load to StageCategories.Paths[Salida de columna derivada]"
-              endId="Package\DTF Load to StageCategories\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+              endId="Package\DTF Load to StageCategories\Multidifusión.Inputs[Entrada de Multidifusión 1]"
               name="Salida de columna derivada"
               startId="Package\DTF Load to StageCategories\DER Metadata.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\DTF Load to StageCategories.Paths[Salida de Multidifusión 1]"
+              endId="Package\DTF Load to StageCategories\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de Multidifusión 1"
+              startId="Package\DTF Load to StageCategories\Multidifusión.Outputs[Salida de Multidifusión 1]" />
+            <path
+              refId="Package\DTF Load to StageCategories.Paths[Salida de multidifusión 1]"
+              endId="Package\DTF Load to StageCategories\Recuento de filas.Inputs[Entrada de Recuento de filas 1]"
+              name="Salida de multidifusión 1"
+              startId="Package\DTF Load to StageCategories\Multidifusión.Outputs[Salida de multidifusión 1]" />
             <path
               refId="Package\DTF Load to StageCategories.Paths[Salida de origen de OLE DB]"
               endId="Package\DTF Load to StageCategories\DER Metadata.Inputs[Entrada de columna derivada]"
@@ -523,6 +615,35 @@ WHERE EtlExecution = ?</property>
               startId="Package\DTF Load to StageCategories\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
           </paths>
         </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Insertar Total Registros"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{c7d2463a-bf6c-4035-9546-ffd14610e213}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Insertar Total Registros"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{96E290E4-96C4-4059-A8FF-FDB1ED311B43}"
+          SQLTask:SqlStatementSource="UPDATE EtlExecution&#xA;SET TotalRegistros = ?&#xA;WHERE Id = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TotalRegistros"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::IdExecution"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -582,14 +703,22 @@ WHERE EtlExecution = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\SQL LastExecution" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{E0064671-A7EB-4D4B-9676-536E03702CA2}"
+      DTS:From="Package\DTF Load to StageCategories"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Insertar Total Registros" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
-<!--If you manually edit this section and make a mistake, you can delete it. -->
-<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
 <Objects
   Version="8">
-  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
@@ -658,6 +787,32 @@ WHERE EtlExecution = ?</property>
           Size="188,72"
           Id="f7f4a2c4-459e-45ea-b338-dffc528f0688"
           TopLeft="475,63" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Insertar Total Registros"
+          TopLeft="224,336" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="318,290">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -665,22 +820,22 @@ WHERE EtlExecution = ?</property>
     design-time-name="Package\DTF Load to StageCategories">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="146,42"
-          Id="Package\DTF Load to StageCategories\DER Metadata"
-          TopLeft="323,151" />
-        <NodeLayout
-          Size="168,42"
-          Id="Package\DTF Load to StageCategories\Destino de OLE DB"
-          TopLeft="307,238" />
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="164,42"
           Id="Package\DTF Load to StageCategories\Origen de OLE DB"
-          TopLeft="312,61" />
+          TopLeft="250,29" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\DTF Load to StageCategories\DER Metadata"
+          TopLeft="261,119" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\DTF Load to StageCategories\Destino de OLE DB"
+          TopLeft="144,286" />
         <EdgeLayout
           Id="Package\DTF Load to StageCategories.Paths[Salida de origen de OLE DB]"
-          TopLeft="395,103">
+          TopLeft="333,71">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -700,20 +855,96 @@ WHERE EtlExecution = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="138,42"
+          Id="Package\DTF Load to StageCategories\Multidifusión"
+          TopLeft="263,198" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\DTF Load to StageCategories\Recuento de filas"
+          TopLeft="366,287" />
         <EdgeLayout
           Id="Package\DTF Load to StageCategories.Paths[Salida de columna derivada]"
-          TopLeft="393.5,193">
+          TopLeft="333,161">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,45"
+              EndConnector="0,37"
               Start="0,0"
-              End="0,37.5">
+              End="0,29.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.5" />
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DTF Load to StageCategories.Paths[Salida de Multidifusión 1]"
+          TopLeft="332,240">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-104,46"
+              Start="0,0"
+              End="-104,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19"
+                    Point2="0,23"
+                    Point3="-4,23" />
+                  <mssgle:LineSegment
+                    End="-100,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-100,23"
+                    Point2="-104,23"
+                    Point3="-104,27" />
+                  <mssgle:LineSegment
+                    End="-104,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DTF Load to StageCategories.Paths[Salida de multidifusión 1]"
+          TopLeft="353.666666666667,240">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="92.3333333333334,47"
+              Start="0,0"
+              End="92.3333333333334,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.1232091690545" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.1232091690545"
+                    Point2="0,19.1232091690545"
+                    Point3="4,19.1232091690545" />
+                  <mssgle:LineSegment
+                    End="88.3333333333334,19.1232091690545" />
+                  <mssgle:CubicBezierSegment
+                    Point1="88.3333333333334,19.1232091690545"
+                    Point2="92.3333333333334,19.1232091690545"
+                    Point3="92.3333333333334,23.1232091690545" />
+                  <mssgle:LineSegment
+                    End="92.3333333333334,39.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -738,6 +969,14 @@ WHERE EtlExecution = ?</property>
     </LayoutInfo>
   </DtsEventHandler>
   <PipelineComponentMetadata
+    design-time-name="Package\DTF Load to StageCategories\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DTF Load to StageCategories\Destino de OLE DB">
     <Properties>
       <Property>
@@ -747,14 +986,6 @@ WHERE EtlExecution = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DTF Load to StageCategories\Origen de OLE DB">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

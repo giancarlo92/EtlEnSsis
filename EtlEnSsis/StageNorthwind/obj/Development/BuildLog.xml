@@ -2,38 +2,38 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>StageNorthwind</Name>
-    <LastWriteTime>2018-07-08T18:37:35.6182814Z</LastWriteTime>
+    <LastWriteTime>2018-07-08T18:37:36Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>StageSales.dtsx</Name>
-      <LastWriteTime>2018-07-08T17:54:24.0324103Z</LastWriteTime>
+      <LastWriteTime>2018-08-10T03:32:36.6537204Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>StageProduct.dtsx</Name>
-      <LastWriteTime>2018-07-08T17:54:24.0011332Z</LastWriteTime>
+      <LastWriteTime>2018-08-10T03:28:00.3953642Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>StageMaster.dtsx</Name>
-      <LastWriteTime>2018-07-08T17:54:23.9698815Z</LastWriteTime>
+      <LastWriteTime>2018-07-08T17:54:24Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>StageEmployee.dtsx</Name>
-      <LastWriteTime>2018-07-08T17:54:23.9698815Z</LastWriteTime>
+      <LastWriteTime>2018-08-10T03:25:52.1630078Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>StageCustomer.dtsx</Name>
-      <LastWriteTime>2018-07-08T17:54:23.907387Z</LastWriteTime>
+      <LastWriteTime>2018-08-10T03:23:46.5128844Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>StageCategories.dtsx</Name>
-      <LastWriteTime>2018-07-08T17:54:23.8605054Z</LastWriteTime>
+      <LastWriteTime>2018-08-10T03:21:33.4598592Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
