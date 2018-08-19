@@ -1,13 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "DatamartNorthwind", "DatamartNorthwind\DatamartNorthwind.dtproj", "{D6FFE566-C6F4-4437-98C7-181FEE9352F0}"
 EndProject
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "LoadNorthwind", "LoadNorthwind\LoadNorthwind.dtproj", "{68B1A38C-743B-46D4-8016-F10E3DD8B6D2}"
 EndProject
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "StageNorthwind", "StageNorthwind\StageNorthwind.dtproj", "{A07D2455-EE84-480F-84D2-CD6AF5C88DC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bases", "Bases", "{29EBB9EB-A777-45C2-89DA-C07C3ED02D4F}"
+	ProjectSection(SolutionItems) = preProject
+		Bases\Northwind.sql = Bases\Northwind.sql
+		Bases\Northwind_Load.sql = Bases\Northwind_Load.sql
+		Bases\Northwind_Mart.sql = Bases\Northwind_Mart.sql
+		Bases\Northwind_Metadata.sql = Bases\Northwind_Metadata.sql
+		Bases\Northwind_Stage.sql = Bases\Northwind_Stage.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,5 +32,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D25EC85-03E7-40AE-A2DF-91E153DA9F23}
 	EndGlobalSection
 EndGlobal
