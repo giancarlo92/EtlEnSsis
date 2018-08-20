@@ -7,7 +7,7 @@
   DTS:CreatorName="CA305-ST\SQLSERV"
   DTS:DTSID="{655C7E65-A508-42EF-BD8C-C60C6A58A197}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LastModifiedProductVersion="14.0.3002.107"
   DTS:LocaleID="10250"
   DTS:ObjectName="StageMaster"
   DTS:PackageType="5"

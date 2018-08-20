@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>DatamartNorthwind</Name>
-    <LastWriteTime>2018-08-20T04:29:29.9468278Z</LastWriteTime>
+    <LastWriteTime>2018-08-19T06:21:10.6300369Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -28,7 +28,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>FactSales.dtsx</Name>
-      <LastWriteTime>2018-08-20T05:23:09.0449873Z</LastWriteTime>
+      <LastWriteTime>2018-08-20T07:19:49.4736335Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DatamartMaster.dtsx</Name>
+      <LastWriteTime>2018-08-19T06:21:19.7512625Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

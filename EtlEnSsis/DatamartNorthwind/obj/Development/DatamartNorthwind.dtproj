@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">CA305-ST</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA63K8jnRz3UyUDlKHtWYDuQAAAAACAAAAAAAQZgAAAAEAACAAAAB4L9zDVRUgwhPTvLQnHglGHkdW2RCuhgwNdWIMlU+8TQAAAAAOgAAAAAIAACAAAAAj7b2E5lWLua84uzT1S6bRZEJsjjjBexAVN1b8sxt1xpAAAAAQXTS3VUZYXPF0QKDKmgNIGnAvJvB3KhyO9Y1w5VanyS2sScJ5icb3+PCOlLYuaPIZuXX3Tu0OgcBnCRU5EDwzr9fUVTuSQQpBPnsKqIgyrEsnEraGk4glBTTaoXvdMLfAvaTTjAMOyu9qZaPrQTy3dEP7VbktJk5eB4F4GlwjJb22/XIncIE4UbclQIufm1pAAAAAdweGnqvCQrXhKjLP4WWEZoFEU6iuvBpdyWOM9ooa0TKHb4h6MuwaIzQzbKdEdCZQ2TWCeNEoKmhzfkDpSBIEUg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA63K8jnRz3UyUDlKHtWYDuQAAAAACAAAAAAAQZgAAAAEAACAAAADTkZH6v9Mv5q9uJKL6PvR+mzEu7CuyqrLjqYtcxgEP9gAAAAAOgAAAAAIAACAAAABaDkY7YpFfjky8WRjkHyOimEpufVhQWkICYAZc5K6oVJAAAAAMTkkigcN2Y6DnXdaIE9OLsfqGhet3/Y46WQIGJXzyPaoGWieHIV3/gcy9BvTK88y9zikgT0Jm1DqBU6gQMZDi1IdkwzMSItWlK+oAb3/LIYxQH488nEwCgH+nG4o8yo7lTfIHQvv5P8TaRF4lsLgltW8qCwExYhH298q6btlvnyfHcZfB/NNYGie5P51mz0pAAAAAKGnJxhZ5GvWqy1OVJCe43LqHogriddXzDJd0OsPiWb1mc1i7TUyvJFk6NvInPkdBGzbjSNzibUcme0CkdpY+iQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -35,6 +35,7 @@
           <SSIS:Package SSIS:Name="DimCustomer.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DimCategories.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="FactSales.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DatamartMaster.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers />
         <SSIS:DeploymentInfo>
@@ -46,10 +47,10 @@
                 <SSIS:Property SSIS:Name="Name">DimProduct</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">37</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">40</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AE3E7040-7410-4CD8-91B8-71524F34702D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{30056A2F-A88A-4DF9-9516-1A7E197F57F1}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -610,10 +611,10 @@
                 <SSIS:Property SSIS:Name="Name">DimCustomer</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">24</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">27</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E85A1A1C-1B47-4E26-BB0E-9161401850D9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FB13AA01-1327-4ED9-96EF-AE9DA8730C7D}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1170,14 +1171,14 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="FactSales.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{803A9237-1AC3-4BA0-9DF5-992E7E9A7BA4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{40D9D607-98E4-40FB-BA45-571F5BA01FAD}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">FactSales</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">65</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">87</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{54B21741-C81B-449A-8AE4-69BE2DD4584B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A1734113-5AFB-4FBD-983A-C69FFC8FE535}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1445,6 +1446,69 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="DatamartMaster.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{8BDAE4FC-138E-4004-957C-F2A0B101FC90}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DatamartMaster</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{39E0E7DE-3513-4C7E-98CD-1FD8F4F4A6F4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="CM.DimCategories.dtsx.ConnectionString">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\Proyectos SSIS\EtlEnSsis\EtlEnSsis\DatamartNorthwind\DimCategories.dtsx</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.DimCustomer.dtsx.ConnectionString">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\Proyectos SSIS\EtlEnSsis\EtlEnSsis\DatamartNorthwind\DimCustomer.dtsx</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.DimEmployee.dtsx.ConnectionString">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\Proyectos SSIS\EtlEnSsis\EtlEnSsis\DatamartNorthwind\DimEmployee.dtsx</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
